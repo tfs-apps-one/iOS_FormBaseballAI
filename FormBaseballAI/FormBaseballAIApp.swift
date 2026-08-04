@@ -1,17 +1,17 @@
 //
 //  FormBaseballAIApp.swift
-//  FormBaseballAI
-//
-//  Created by 古川貴史 on 2026/05/24.
+//  AI Baseball Form Coach / AI野球フォーム診断
 //
 
 import SwiftUI
 
 @main
 struct FormBaseballAIApp: App {
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
+                .preferredColorScheme(.dark)
         }
     }
 }

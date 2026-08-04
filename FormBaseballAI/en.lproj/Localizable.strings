@@ -1,0 +1,90 @@
+/* ── App / Navigation ─────────────────────────────────────── */
+"app_name"             = "AI Baseball Form Coach";
+"home_title"           = "⚾ AI Baseball Form Coach";
+"home_subtitle"        = "Select your training mode";
+"btn_pitching"         = "Pitching Mode";
+"btn_batting"          = "Batting Mode";
+"btn_start_record"     = "▶ Start Recording";
+"btn_stop_record"      = "⏹ Stop Recording";
+"btn_try_again"        = "Try Again";
+"label_auto_stop"      = "🕐 Auto Stop (7s)";
+"hint_auto_stop_countdown" = "🔴 Recording… auto-stop in %ds";
+"permission_required"  = "Camera permission is required to analyze your form.";
+"no_pose_detected"     = "No pose detected. Please try again.";
+
+/* ── Help dialog ───────────────────────────────────────── */
+"help_dialog_title"    = "How to Use";
+"help_steps_header"    = "📋 How to Use";
+"help_steps_text"      = "① Tap ▶ Start Recording and perform your form\n② Pitching: cocking position (throwing elbow in \"L\" shape) through follow-through\n   Batting: setup stance through follow-through\n③ Tap ⏹ Stop Recording when done\n④ The app automatically splits the motion into 8 phases\n⑤ Tap any Phase 1–8 to switch its detailed breakdown and tips (the worst-scoring phase is shown first)";
+"help_coach_header"    = "🤖 About the AI Coach";
+"help_coach_text"      = "The coach is powered by AI trained on a vast dataset of professional baseball players.\n\nThousands of frames of pitching and batting motion — joint coordinates, elbow angles, shoulder and hip alignment, knee flex — were analysed with machine learning to derive statistically optimal form parameters.\n\nIn real time, your skeleton is detected by the camera and each of the 5 key angles is compared against the AI's ideal values, scoring your form from 0 to 100.";
+"help_tips_header"     = "📌 Tips";
+"help_tips_text"       = "• Face the camera directly (front view)\n• Stand far enough that your full body is visible\n• 🟢 Green skeleton = your actual form\n• 🔵 Cyan skeleton = AI coach ideal form\n• Record at least 2–3 seconds for reliable 8-phase sampling\n• Every phase (1–8) gets its own diagnosis and advice";
+"help_controls_header" = "🎛️ Controls";
+"help_controls_text"   = "📷 Camera Switch Button\n• Tap the camera icon to switch between front and rear camera.\n• Cannot switch while recording.\n\n🕐 Auto-Stop Toggle\n• ON: Recording stops automatically after 7 seconds.\n• OFF: Recording continues until you tap Stop manually.";
+
+/* ── Validation hints ──────────────────────────────────── */
+"hint_no_human"              = "🔍 No person detected — step in front of the camera";
+"hint_wrong_pose_pitching"   = "⚾ Hold your pitching position: raise your throwing arm to form an \"L\"";
+"hint_wrong_pose_batting"    = "🏏 Hold your batting position: raise both arms into the hitting zone";
+
+/* ── Camera screen guidance ───────────────────────────── */
+"camera_hint_pitching"        = "📹 Face the camera — hold the COCKING position (throwing elbow in \"L\" shape)";
+"camera_hint_batting"         = "📹 Face the camera — hold the CONTACT position (bat level, hips rotated)";
+"hint_recording_in_progress"  = "🔴 Recording… tap Stop when you finish the motion";
+"hint_processing"             = "⏳ Analysing phases…";
+"recording_too_short"         = "Recording too short — hold the pose for a moment before stopping";
+
+/* ── Live score bar ──────────────────────────────────── */
+"label_live_score" = "Live Score";
+"label_avg_score"  = "Average Score";
+"label_phase"      = "Phase";
+
+/* ── Result screen ─────────────────────────────────────── */
+"result_phase_scores"  = "Phase Scores";
+"result_worst_phase"   = "⚠️ Phase needing most work:";
+"result_details"       = "Breakdown";
+"result_strengths"     = "✅ Strengths";
+"result_improvements"  = "⚠️ Areas to Improve";
+"feedback_keep_practicing" = "Keep practicing — consistency builds form.";
+"feedback_fine_tune"       = "Form is close! Fine-tune each angle for perfection.";
+
+/* ── AR Overlay legend ─────────────────────────────────── */
+"legend_you"   = "You";
+"legend_coach" = "Coach";
+
+/* ── AR Overlay angle labels ──────────────────────────── */
+"label_right_elbow"    = "R.Elbow";
+"label_left_elbow"     = "L.Elbow";
+"label_shoulder_level" = "Shoulder";
+"label_hip_level"      = "Waist";
+"label_right_knee"     = "R.Knee";
+"label_left_knee"      = "L.Knee";
+
+/* ── Result breakdown component names ─────────────────── */
+"component_right_elbow" = "Right Elbow";
+"component_left_elbow"  = "Left Elbow";
+"component_shoulder"    = "Shoulder Level";
+"component_hip"         = "Hip Level";
+"component_lead_knee"   = "Lead Knee";
+
+/* ── Strength feedback ──────────────────────────────── */
+"strength_right_elbow" = "Right elbow angle is excellent — great arm position.";
+"strength_left_elbow"  = "Left elbow angle is well set.";
+"strength_shoulder"    = "Shoulder alignment is level — good rotational base.";
+"strength_hip"         = "Hips are level and balanced.";
+"strength_lead_knee"   = "Lead knee flex is ideal for power transfer.";
+
+/* ── Pitching improvements ──────────────────────────── */
+"improve_pitch_right_elbow" = "Bring your throwing elbow to ~85° at cocking phase.";
+"improve_pitch_left_elbow"  = "Keep your glove arm at ~100° to maintain balance.";
+"improve_pitch_shoulder"    = "Level your shoulders at foot-plant to improve rotation.";
+"improve_pitch_hip"         = "Keep hips level to prevent energy leakage.";
+"improve_pitch_knee"        = "Bend your lead knee more (~35°) to absorb momentum.";
+
+/* ── Batting improvements ───────────────────────────── */
+"improve_bat_right_elbow" = "Drive your back elbow down to ~90° at contact.";
+"improve_bat_left_elbow"  = "Extend your lead arm to ~155° through the hitting zone.";
+"improve_bat_shoulder"    = "Tilt shoulders slightly (-8°) toward the strike zone.";
+"improve_bat_hip"         = "Keep hips level during rotation for consistent contact.";
+"improve_bat_knee"        = "Drive through your front leg — aim for ~158° extension.";

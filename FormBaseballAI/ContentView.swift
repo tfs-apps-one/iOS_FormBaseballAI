@@ -1,21 +1,15 @@
 //
 //  ContentView.swift
-//  FormBaseballAI
+//  AI Baseball Form Coach / AI野球フォーム診断
 //
-//  Created by 古川貴史 on 2026/05/24.
-//
+//  Note: This file is kept for Xcode preview compatibility.
+//  The actual root view is HomeView, set in FormBaseballAIApp.swift.
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        HomeView()
     }
 }
 

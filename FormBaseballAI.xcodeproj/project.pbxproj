@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		55A0FA14EC120E744E9C7B76 /* Pods_FormBaseballAI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 250FE91557731D028B70971B /* Pods_FormBaseballAI.framework */; };
+		97A1FAD267E50F08998476A6 /* Pods_FormBaseballAIUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9CE169A5677B1F8151A3E789 /* Pods_FormBaseballAIUITests.framework */; };
+		CF03FA7B2B065C5B043C5063 /* Pods_FormBaseballAITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01517F65C39AB990FB25DEE3 /* Pods_FormBaseballAITests.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		FAFFD2262FC2749500746F70 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,24 +30,50 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		01517F65C39AB990FB25DEE3 /* Pods_FormBaseballAITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FormBaseballAITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		250FE91557731D028B70971B /* Pods_FormBaseballAI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FormBaseballAI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3370798FFEB9D3B6AC25951C /* Pods-FormBaseballAI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormBaseballAI.debug.xcconfig"; path = "Target Support Files/Pods-FormBaseballAI/Pods-FormBaseballAI.debug.xcconfig"; sourceTree = "<group>"; };
+		62D75E99A315A0CC049643F2 /* Pods-FormBaseballAITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormBaseballAITests.release.xcconfig"; path = "Target Support Files/Pods-FormBaseballAITests/Pods-FormBaseballAITests.release.xcconfig"; sourceTree = "<group>"; };
+		817E6B5CC5173ED83F777FCA /* Pods-FormBaseballAITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormBaseballAITests.debug.xcconfig"; path = "Target Support Files/Pods-FormBaseballAITests/Pods-FormBaseballAITests.debug.xcconfig"; sourceTree = "<group>"; };
+		94D2A76030AE0290283B267D /* Pods-FormBaseballAIUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormBaseballAIUITests.release.xcconfig"; path = "Target Support Files/Pods-FormBaseballAIUITests/Pods-FormBaseballAIUITests.release.xcconfig"; sourceTree = "<group>"; };
+		9CE169A5677B1F8151A3E789 /* Pods_FormBaseballAIUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FormBaseballAIUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9F2B8AC83608D265CBD1241E /* Pods-FormBaseballAIUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormBaseballAIUITests.debug.xcconfig"; path = "Target Support Files/Pods-FormBaseballAIUITests/Pods-FormBaseballAIUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		FAFFD2182FC2749400746F70 /* FormBaseballAI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FormBaseballAI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFFD2252FC2749500746F70 /* FormBaseballAITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormBaseballAITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FAFFD22F2FC2749500746F70 /* FormBaseballAIUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FormBaseballAIUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE7AFAEAA0D5B0E96D0B7643 /* Pods-FormBaseballAI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FormBaseballAI.release.xcconfig"; path = "Target Support Files/Pods-FormBaseballAI/Pods-FormBaseballAI.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		A1B2C3D4E5F60001A1B2C3D4 /* Exceptions for "FormBaseballAI" folder in "FormBaseballAI" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = FAFFD2172FC2749400746F70 /* FormBaseballAI */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		FAFFD21A2FC2749400746F70 /* FormBaseballAI */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				A1B2C3D4E5F60001A1B2C3D4 /* Exceptions for "FormBaseballAI" folder in "FormBaseballAI" target */,
+			);
 			path = FormBaseballAI;
 			sourceTree = "<group>";
 		};
 		FAFFD2282FC2749500746F70 /* FormBaseballAITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = FormBaseballAITests;
 			sourceTree = "<group>";
 		};
 		FAFFD2322FC2749500746F70 /* FormBaseballAIUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = FormBaseballAIUITests;
 			sourceTree = "<group>";
 		};
@@ -52,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55A0FA14EC120E744E9C7B76 /* Pods_FormBaseballAI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CF03FA7B2B065C5B043C5063 /* Pods_FormBaseballAITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,12 +100,36 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97A1FAD267E50F08998476A6 /* Pods_FormBaseballAIUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D65F7AB2D768A8E4097C485 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				250FE91557731D028B70971B /* Pods_FormBaseballAI.framework */,
+				01517F65C39AB990FB25DEE3 /* Pods_FormBaseballAITests.framework */,
+				9CE169A5677B1F8151A3E789 /* Pods_FormBaseballAIUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EA22C4B9EB557D26BADCFA0F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3370798FFEB9D3B6AC25951C /* Pods-FormBaseballAI.debug.xcconfig */,
+				FE7AFAEAA0D5B0E96D0B7643 /* Pods-FormBaseballAI.release.xcconfig */,
+				817E6B5CC5173ED83F777FCA /* Pods-FormBaseballAITests.debug.xcconfig */,
+				62D75E99A315A0CC049643F2 /* Pods-FormBaseballAITests.release.xcconfig */,
+				9F2B8AC83608D265CBD1241E /* Pods-FormBaseballAIUITests.debug.xcconfig */,
+				94D2A76030AE0290283B267D /* Pods-FormBaseballAIUITests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		FAFFD20F2FC2749400746F70 = {
 			isa = PBXGroup;
 			children = (
@@ -79,6 +137,8 @@
 				FAFFD2282FC2749500746F70 /* FormBaseballAITests */,
 				FAFFD2322FC2749500746F70 /* FormBaseballAIUITests */,
 				FAFFD2192FC2749400746F70 /* Products */,
+				EA22C4B9EB557D26BADCFA0F /* Pods */,
+				8D65F7AB2D768A8E4097C485 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -99,9 +159,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAFFD2392FC2749500746F70 /* Build configuration list for PBXNativeTarget "FormBaseballAI" */;
 			buildPhases = (
+				238EB103206906CD33AF7FA2 /* [CP] Check Pods Manifest.lock */,
 				FAFFD2142FC2749400746F70 /* Sources */,
 				FAFFD2152FC2749400746F70 /* Frameworks */,
 				FAFFD2162FC2749400746F70 /* Resources */,
+				ECB9CCE29088E9C89B3821B0 /* [CP] Embed Pods Frameworks */,
+				FAB9FB4C0860121621541817 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -111,8 +174,6 @@
 				FAFFD21A2FC2749400746F70 /* FormBaseballAI */,
 			);
 			name = FormBaseballAI;
-			packageProductDependencies = (
-			);
 			productName = FormBaseballAI;
 			productReference = FAFFD2182FC2749400746F70 /* FormBaseballAI.app */;
 			productType = "com.apple.product-type.application";
@@ -121,6 +182,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAFFD23C2FC2749500746F70 /* Build configuration list for PBXNativeTarget "FormBaseballAITests" */;
 			buildPhases = (
+				75F28F4371E331E60A302C0F /* [CP] Check Pods Manifest.lock */,
 				FAFFD2212FC2749500746F70 /* Sources */,
 				FAFFD2222FC2749500746F70 /* Frameworks */,
 				FAFFD2232FC2749500746F70 /* Resources */,
@@ -134,8 +196,6 @@
 				FAFFD2282FC2749500746F70 /* FormBaseballAITests */,
 			);
 			name = FormBaseballAITests;
-			packageProductDependencies = (
-			);
 			productName = FormBaseballAITests;
 			productReference = FAFFD2252FC2749500746F70 /* FormBaseballAITests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -144,6 +204,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = FAFFD23F2FC2749500746F70 /* Build configuration list for PBXNativeTarget "FormBaseballAIUITests" */;
 			buildPhases = (
+				E89B6B7C157571E7E2C1F7B7 /* [CP] Check Pods Manifest.lock */,
 				FAFFD22B2FC2749500746F70 /* Sources */,
 				FAFFD22C2FC2749500746F70 /* Frameworks */,
 				FAFFD22D2FC2749500746F70 /* Resources */,
@@ -157,8 +218,6 @@
 				FAFFD2322FC2749500746F70 /* FormBaseballAIUITests */,
 			);
 			name = FormBaseballAIUITests;
-			packageProductDependencies = (
-			);
 			productName = FormBaseballAIUITests;
 			productReference = FAFFD22F2FC2749500746F70 /* FormBaseballAIUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -192,6 +251,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ja,
 			);
 			mainGroup = FAFFD20F2FC2749400746F70;
 			minimizedProjectReferenceProxies = 1;
@@ -230,6 +290,109 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		238EB103206906CD33AF7FA2 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FormBaseballAI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		75F28F4371E331E60A302C0F /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FormBaseballAITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E89B6B7C157571E7E2C1F7B7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FormBaseballAIUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		ECB9CCE29088E9C89B3821B0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FormBaseballAI/Pods-FormBaseballAI-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FormBaseballAI/Pods-FormBaseballAI-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FormBaseballAI/Pods-FormBaseballAI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FAB9FB4C0860121621541817 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FormBaseballAI/Pods-FormBaseballAI-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FormBaseballAI/Pods-FormBaseballAI-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FormBaseballAI/Pods-FormBaseballAI-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		FAFFD2142FC2749400746F70 /* Sources */ = {
@@ -307,7 +470,7 @@
 				DEVELOPMENT_TEAM = FD75RKYVZQ;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -369,7 +532,7 @@
 				DEVELOPMENT_TEAM = FD75RKYVZQ;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu17;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -387,17 +550,18 @@
 		};
 		FAFFD23A2FC2749500746F70 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3370798FFEB9D3B6AC25951C /* Pods-FormBaseballAI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FD75RKYVZQ;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = FormBaseballAI/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FormBaseballAI;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -408,40 +572,33 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tfsapps.fbai.FormBaseballAI;
+				PRODUCT_BUNDLE_IDENTIFIER = tfsapps.fbai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				SDKROOT = auto;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 26.5;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		FAFFD23B2FC2749500746F70 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FE7AFAEAA0D5B0E96D0B7643 /* Pods-FormBaseballAI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FD75RKYVZQ;
-				ENABLE_APP_SANDBOX = YES;
-				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
-				ENABLE_USER_SELECTED_FILES = readonly;
-				GENERATE_INFOPLIST_FILE = YES;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = FormBaseballAI/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = FormBaseballAI;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -452,126 +609,106 @@
 				"INFOPLIST_KEY_UIStatusBarStyle[sdk=iphonesimulator*]" = UIStatusBarStyleDefault;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
-				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
-				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tfsapps.fbai.FormBaseballAI;
+				PRODUCT_BUNDLE_IDENTIFIER = tfsapps.fbai;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				REGISTER_APP_GROUPS = YES;
-				SDKROOT = auto;
-				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
-				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 26.5;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		FAFFD23D2FC2749500746F70 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 817E6B5CC5173ED83F777FCA /* Pods-FormBaseballAITests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FD75RKYVZQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
-				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tfsapps.fbai.FormBaseballAITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FormBaseballAI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FormBaseballAI";
-				XROS_DEPLOYMENT_TARGET = 26.5;
 			};
 			name = Debug;
 		};
 		FAFFD23E2FC2749500746F70 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 62D75E99A315A0CC049643F2 /* Pods-FormBaseballAITests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FD75RKYVZQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
-				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tfsapps.fbai.FormBaseballAITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FormBaseballAI.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/FormBaseballAI";
-				XROS_DEPLOYMENT_TARGET = 26.5;
 			};
 			name = Release;
 		};
 		FAFFD2402FC2749500746F70 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9F2B8AC83608D265CBD1241E /* Pods-FormBaseballAIUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FD75RKYVZQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
-				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tfsapps.fbai.FormBaseballAIUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = FormBaseballAI;
-				XROS_DEPLOYMENT_TARGET = 26.5;
 			};
 			name = Debug;
 		};
 		FAFFD2412FC2749500746F70 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94D2A76030AE0290283B267D /* Pods-FormBaseballAIUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FD75RKYVZQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 26.5;
-				MACOSX_DEPLOYMENT_TARGET = 26.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = tfsapps.fbai.FormBaseballAIUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = NO;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = 1;
 				TEST_TARGET_NAME = FormBaseballAI;
-				XROS_DEPLOYMENT_TARGET = 26.5;
 			};
 			name = Release;
 		};

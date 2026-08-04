@@ -1,0 +1,6 @@
+framework module Pods_FormBaseballAITests {
+  umbrella header "Pods-FormBaseballAITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

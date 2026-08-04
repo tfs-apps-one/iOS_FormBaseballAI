@@ -1,0 +1,90 @@
+/* ── App / Navigation ─────────────────────────────────────── */
+"app_name"             = "AI野球フォーム診断";
+"home_title"           = "⚾ AI野球フォーム診断";
+"home_subtitle"        = "トレーニングモードを選択してください";
+"btn_pitching"         = "ピッチングモード";
+"btn_batting"          = "バッティングモード";
+"btn_start_record"     = "▶ 録画開始";
+"btn_stop_record"      = "⏹ 録画停止";
+"btn_try_again"        = "もう一度試す";
+"label_auto_stop"      = "🕐 自動停止（7秒）";
+"hint_auto_stop_countdown" = "🔴 録画中… %d秒後に自動停止";
+"permission_required"  = "フォームを分析するにはカメラの権限が必要です。";
+"no_pose_detected"     = "ポーズを検出できません。もう一度お試しください。";
+
+/* ── Help dialog ───────────────────────────────────────── */
+"help_dialog_title"    = "使い方";
+"help_steps_header"    = "📋 使い方";
+"help_steps_text"      = "① 「▶ 録画開始」をタップしてフォームを行ってください\n② ピッチング：コッキング（投げる肘をＬ字）→ フォロースルーまで\n   バッティング：構え → フォロースルーまで\n③ 動作が終わったら「⏹ 録画停止」をタップ\n④ アプリが動作を自動的に 8 つのフェーズに分割して分析します\n⑤ フェーズ１〜８をタップすると、各フェーズの詳細と改善点に切り替わります（最初は最も改善が必要なフェーズを表示）";
+"help_coach_header"    = "🤖 AIコーチについて";
+"help_coach_text"      = "このアプリのコーチは人工知能です。\n\nプロ野球選手の投球・打撃フォームに関する膨大なデータ（数万フレームの骨格座標・関節角度）を機械学習で解析。肘・肩・腰・ひざなど各関節の理想的な角度パラメータを統計的に算出しています。\n\nカメラ映像からリアルタイムで骨格を検出し、5 つの主要関節角度を AIの理想値と比較して 0〜100 点でスコア化。最も改善が必要なポイントを特定します。";
+"help_tips_header"     = "📌 ポイント";
+"help_tips_text"       = "• カメラに正面を向けて撮影してください\n• 全身が映るように距離を調整してください\n• 🟢 緑のスケルトン ＝ あなたのフォーム\n• 🔵 水色のスケルトン ＝ AIコーチの理想フォーム\n• 信頼性の高い 8 フェーズ分析のため、2〜3 秒以上録画してください\n• フェーズ１〜８すべてに、それぞれ個別の診断結果とアドバイスが表示されます";
+"help_controls_header" = "🎛️ 操作ボタン";
+"help_controls_text"   = "📷 カメラ切替ボタン\n• カメラアイコンをタップすると、インカメラとアウトカメラを切り替えられます。\n• ※ 録画中は切り替えできません。\n\n🕐 自動停止スイッチ\n• ON: 7秒後に自動で録画を停止します。\n• OFF: 手動で停止するまで録画が続きます。";
+
+/* ── Validation hints ──────────────────────────────────── */
+"hint_no_human"              = "🔍 人が検出されていません — カメラの前に立ってください";
+"hint_wrong_pose_pitching"   = "⚾ ピッチングフォームを取ってください：投げる側のひじをＬ字型に上げてください";
+"hint_wrong_pose_batting"    = "🏏 バッティングフォームを取ってください：両腕をインパクトゾーンまで上げてください";
+
+/* ── Camera screen guidance ───────────────────────────── */
+"camera_hint_pitching"        = "📹 カメラに正面を向いて — テイクバック（ひじをＬ字型）の姿勢を保持";
+"camera_hint_batting"         = "📹 カメラに正面を向いて — インパクトの瞬間（バット水平・腰回転）を保持";
+"hint_recording_in_progress"  = "🔴 録画中… 動作が終わったら停止をタップしてください";
+"hint_processing"             = "⏳ フェーズを分析中…";
+"recording_too_short"         = "録画が短すぎます — フォームを保持してから停止してください";
+
+/* ── Live score bar ──────────────────────────────────── */
+"label_live_score" = "リアルタイムスコア";
+"label_avg_score"  = "平均スコア";
+"label_phase"      = "フェーズ";
+
+/* ── Result screen ─────────────────────────────────────── */
+"result_phase_scores"  = "フェーズ別スコア";
+"result_worst_phase"   = "⚠️ 最も改善が必要なフェーズ：";
+"result_details"       = "詳細";
+"result_strengths"     = "✅ 良い点";
+"result_improvements"  = "⚠️ 改善点";
+"feedback_keep_practicing" = "継続は力なり。コツコツと練習を続けましょう。";
+"feedback_fine_tune"       = "フォームはほぼ完璧！各角度を微調整して仕上げましょう。";
+
+/* ── AR Overlay legend ─────────────────────────────────── */
+"legend_you"   = "あなた";
+"legend_coach" = "コーチ";
+
+/* ── AR Overlay angle labels ──────────────────────────── */
+"label_right_elbow"    = "右肘";
+"label_left_elbow"     = "左肘";
+"label_shoulder_level" = "肩水平";
+"label_hip_level"      = "腰水平";
+"label_right_knee"     = "右膝";
+"label_left_knee"      = "左膝";
+
+/* ── Result breakdown component names ─────────────────── */
+"component_right_elbow" = "右ひじ";
+"component_left_elbow"  = "左ひじ";
+"component_shoulder"    = "肩の水平";
+"component_hip"         = "腰の水平";
+"component_lead_knee"   = "踏み出しひざ";
+
+/* ── Strength feedback ──────────────────────────────── */
+"strength_right_elbow" = "右ひじの角度が優れています。良いアームポジションです。";
+"strength_left_elbow"  = "左ひじの角度が適切に設定されています。";
+"strength_shoulder"    = "肩の水平が保たれています。回転の土台が良いです。";
+"strength_hip"         = "腰の水平が保たれており、バランスが取れています。";
+"strength_lead_knee"   = "踏み出し足のひざの曲げが理想的でパワー伝達に優れています。";
+
+/* ── Pitching improvements ──────────────────────────── */
+"improve_pitch_right_elbow" = "テイクバック時に投げる側のひじを約85°に保ちましょう。";
+"improve_pitch_left_elbow"  = "グローブ側の腕を約100°に保ちバランスを維持しましょう。";
+"improve_pitch_shoulder"    = "踏み出し時に肩を水平に保ち回転を向上させましょう。";
+"improve_pitch_hip"         = "腰を水平に保ちエネルギーのロスを防ぎましょう。";
+"improve_pitch_knee"        = "踏み出し足のひざをもっと曲げて（約35°）衝撃を吸収しましょう。";
+
+/* ── Batting improvements ───────────────────────────── */
+"improve_bat_right_elbow" = "インパクト時に後ろ側のひじを約90°に下ろしましょう。";
+"improve_bat_left_elbow"  = "スイングゾーンでリード腕を約155°まで伸ばしましょう。";
+"improve_bat_shoulder"    = "肩をストライクゾーンに向けてわずかに傾けましょう（−8°）。";
+"improve_bat_hip"         = "回転中は腰を水平に保ち安定したコンタクトを目指しましょう。";
+"improve_bat_knee"        = "前足でしっかり踏み込み約158°まで伸ばしましょう。";
