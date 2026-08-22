@@ -88,3 +88,9 @@
 "improve_bat_shoulder"    = "Tilt shoulders slightly (-8°) toward the strike zone.";
 "improve_bat_hip"         = "Keep hips level during rotation for consistent contact.";
 "improve_bat_knee"        = "Drive through your front leg — aim for ~158° extension.";
+
+/* ── Review prompt ─────────────────────────────────────── */
+"review_prompt_title"         = "Thanks for using the app!";
+"review_prompt_message"       = "This app is built and maintained by a solo developer. Your review and comments mean a lot and really help keep it going — I'd love to hear your honest feedback.";
+"review_prompt_rate_button"   = "Rate the App";
+"review_prompt_dismiss_button" = "Don't show again";

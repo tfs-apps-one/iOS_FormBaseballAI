@@ -88,3 +88,9 @@
 "improve_bat_shoulder"    = "肩をストライクゾーンに向けてわずかに傾けましょう（−8°）。";
 "improve_bat_hip"         = "回転中は腰を水平に保ち安定したコンタクトを目指しましょう。";
 "improve_bat_knee"        = "前足でしっかり踏み込み約158°まで伸ばしましょう。";
+
+/* ── Review prompt ─────────────────────────────────────── */
+"review_prompt_title"         = "応援ありがとうございます！";
+"review_prompt_message"       = "このアプリは個人で開発・運営しています。皆さまからのレビューやコメントが、開発を続ける大きな励みになっています。もしよろしければ、率直なご感想をお聞かせください。";
+"review_prompt_rate_button"   = "評価する";
+"review_prompt_dismiss_button" = "次回以降は表示しない";

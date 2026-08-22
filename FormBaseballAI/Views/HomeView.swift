@@ -7,6 +7,8 @@ struct HomeView: View {
 
     @State private var selectedMode: FormMode? = nil
     @State private var navigateToCamera = false
+    @State private var showReviewPrompt = false
+    @State private var hasCheckedReviewPrompt = false
 
     var body: some View {
         NavigationStack {
@@ -62,6 +64,23 @@ struct HomeView: View {
                     Spacer()
                     Spacer()
                 }
+
+                // ── Review prompt overlay ────────────────────────────────
+                if showReviewPrompt {
+                    ReviewPromptOverlay(
+                        onRate: {
+                            // Do NOT opt out here — the prompt should keep
+                            // appearing on every future launch (3rd, 4th, 5th…)
+                            // unless the user explicitly dismisses it forever.
+                            ReviewPromptManager.shared.openAppStoreReviewPage()
+                            withAnimation { showReviewPrompt = false }
+                        },
+                        onDismissForever: {
+                            ReviewPromptManager.shared.optOut()
+                            withAnimation { showReviewPrompt = false }
+                        }
+                    )
+                }
             }
             .navigationDestination(isPresented: $navigateToCamera) {
                 if let mode = selectedMode {
@@ -69,6 +88,18 @@ struct HomeView: View {
                 }
             }
             .navigationBarHidden(true)
+            .onAppear {
+                // Guard so returning to HomeView from CameraView (a pop, which
+                // re-triggers onAppear) doesn't re-check/re-show the prompt.
+                guard !hasCheckedReviewPrompt else { return }
+                hasCheckedReviewPrompt = true
+
+                if ReviewPromptManager.shared.shouldShowPrompt {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
+                        withAnimation { showReviewPrompt = true }
+                    }
+                }
+            }
         }
     }
 }
