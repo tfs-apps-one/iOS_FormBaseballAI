@@ -7,6 +7,7 @@ struct HomeView: View {
 
     @State private var selectedMode: FormMode? = nil
     @State private var navigateToCamera = false
+    @State private var navigateToPracticeRecord = false
     @State private var showReviewPrompt = false
     @State private var hasCheckedReviewPrompt = false
 
@@ -58,6 +59,14 @@ struct HomeView: View {
                             selectedMode   = .batting
                             navigateToCamera = true
                         }
+
+                        ModeButton(
+                            title: NSLocalizedString("btn_practice_record", comment: ""),
+                            color: Color(red: 0.365, green: 0.361, blue: 0.902), // indigo accent
+                            icon: "chart.line.uptrend.xyaxis"
+                        ) {
+                            navigateToPracticeRecord = true
+                        }
                     }
                     .padding(.horizontal, 32)
 
@@ -86,6 +95,9 @@ struct HomeView: View {
                 if let mode = selectedMode {
                     CameraView(mode: mode)
                 }
+            }
+            .navigationDestination(isPresented: $navigateToPracticeRecord) {
+                PracticeRecordListView()
             }
             .navigationBarHidden(true)
             .onAppear {

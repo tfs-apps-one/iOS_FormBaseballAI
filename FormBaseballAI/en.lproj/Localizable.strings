@@ -94,3 +94,14 @@
 "review_prompt_message"       = "This app is built and maintained by a solo developer. Your review and comments mean a lot and really help keep it going — I'd love to hear your honest feedback.";
 "review_prompt_rate_button"   = "Rate the App";
 "review_prompt_dismiss_button" = "Don't show again";
+
+/* ── Practice record ───────────────────────────────────── */
+"btn_practice_record"              = "Practice Log";
+"practice_record_title"            = "Practice Log (Last 30)";
+"practice_record_empty"            = "No practice records yet.\nRun a diagnosis to start tracking your scores.";
+"practice_record_improvements"     = "Improvement Points:";
+"btn_graph"                        = "Graph";
+"graph_title"                      = "Practice Score Trend";
+"btn_close"                        = "✕ Close";
+"chart_legend_pitching"            = "Pitching";
+"chart_legend_batting"             = "Batting";

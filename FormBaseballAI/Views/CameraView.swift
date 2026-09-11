@@ -264,7 +264,16 @@ struct CameraView: View {
                 improvementsPerPhase: improvementsPerPhase,
                 imagePaths: imagePaths)
 
+            // Save this diagnosis into the practice-record history (last 30 kept).
+            let worstImprovements = improvementsPerPhase[worstIdx].joined(separator: ", ")
+
             DispatchQueue.main.async {
+                // PracticeRecordStore is @Published-backed, so it must be
+                // mutated on the main thread even though scoring itself
+                // runs on a background queue.
+                PracticeRecordStore.shared.add(
+                    mode: capturedMode, score: avg, improvementSummary: worstImprovements)
+
                 isProcessing     = false
                 multiFrameResult = result
                 navigateToResult = true

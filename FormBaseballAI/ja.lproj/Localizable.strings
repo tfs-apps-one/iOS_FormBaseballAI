@@ -94,3 +94,14 @@
 "review_prompt_message"       = "このアプリは個人で開発・運営しています。皆さまからのレビューやコメントが、開発を続ける大きな励みになっています。もしよろしければ、率直なご感想をお聞かせください。";
 "review_prompt_rate_button"   = "評価する";
 "review_prompt_dismiss_button" = "次回以降は表示しない";
+
+/* ── Practice record ───────────────────────────────────── */
+"btn_practice_record"              = "練習記録";
+"practice_record_title"            = "練習記録 (過去30回)";
+"practice_record_empty"            = "まだ練習記録がありません。\n診断を行うとここに記録されます。";
+"practice_record_improvements"     = "改善ポイント:";
+"btn_graph"                        = "グラフ";
+"graph_title"                      = "練習記録スコア推移";
+"btn_close"                        = "✕ 閉じる";
+"chart_legend_pitching"            = "ピッチング";
+"chart_legend_batting"             = "バッティング";
