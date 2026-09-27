@@ -1,6 +1,12 @@
 // CameraView.swift — Full-screen camera screen with pose overlay, live score,
 // and recording controls.
 // Mirrors: tfsapps.formbaseballai.camera.CameraActivity
+//
+// • 無料ユーザーは 1 日 5 回まで（DailyQuotaManager）。0 回で録画開始しようとすると
+//   リワード広告（+3 回）／プレミアムの案内モーダルを表示する。
+// • 回数は「診断が完了して結果画面へ進むとき」に 1 回消費する。
+// • 残りが少なくなったら、結果画面から戻ったときにカメラ画面上部で知らせる。
+// • バナー／インタースティシャル広告は Android v3.0 に合わせて全廃。
 
 import SwiftUI
 import AVFoundation
@@ -14,7 +20,17 @@ struct CameraView: View {
 
     // Navigation
     @State private var multiFrameResult: MultiFrameResult? = nil
+    @State private var resultProgress: ProgressSnapshot? = nil
     @State private var navigateToResult = false
+
+    // 診断回数 / リワード広告 / プレミアム導線
+    @ObservedObject private var premium = PremiumManager.shared
+    @State private var showQuotaDialog = false
+    @State private var showPremium     = false
+    @State private var topNotice: String? = nil
+    @State private var topNoticeToken  = 0
+    /// 結果画面から戻ったときに上部へ出すメッセージ（残り回数など）。
+    @State private var pendingTopNotice: String? = nil
 
     // UI helpers
     @State private var isProcessing   = false
@@ -29,6 +45,60 @@ struct CameraView: View {
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
+        ZStack {
+            arScreen
+                .overlay(alignment: .top) { topNoticeView }
+
+            if showQuotaDialog {
+                QuotaExhaustedDialog(
+                    onWatchReward: {
+                        withAnimation { showQuotaDialog = false }
+                        showRewardedAd()
+                    },
+                    onGoPremium: {
+                        withAnimation { showQuotaDialog = false }
+                        showPremium = true
+                    },
+                    onClose: { withAnimation { showQuotaDialog = false } }
+                )
+            }
+        }
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(true)
+        .sheet(isPresented: $showHelpSheet) { HelpSheet() }
+        .premiumSheet(isPresented: $showPremium)
+        .navigationDestination(isPresented: $navigateToResult) {
+            if let result = multiFrameResult { ResultView(result: result, progress: resultProgress) }
+        }
+        .onAppear {
+            viewModel.mode = mode
+            hintText = defaultHint
+            setupAnalyzer()
+            preloadRewardedAd()
+            // 結果画面から戻ってきたタイミングで、残り回数などを上部に表示する
+            if let msg = pendingTopNotice {
+                pendingTopNotice = nil
+                showTopNotice(msg, seconds: Self.topNoticeLong)
+            }
+        }
+        .onDisappear {
+            analyzer.stopSession()
+            viewModel.cancelAutoStop()
+            RewardedAdManager.shared.cancelPending()
+        }
+        .onChange(of: viewModel.validationState) { updateHint() }
+        .onChange(of: viewModel.recordingState)  { updateHint() }
+        .onChange(of: viewModel.autoStopRemaining) { remaining in
+            if viewModel.recordingState == .recording && remaining > 0 {
+                hintText = String(format: NSLocalizedString("hint_auto_stop_countdown", comment: ""),
+                                  remaining)
+            }
+        }
+    }
+
+    // MARK: – AR screen (camera preview + pose overlay + controls)
+
+    private var arScreen: some View {
         ZStack {
             Color.black.ignoresSafeArea()
 
@@ -113,29 +183,6 @@ struct CameraView: View {
                 .padding(.bottom, 24)
             }
         }
-        .navigationBarHidden(true)
-        .navigationBarBackButtonHidden(true)
-        .sheet(isPresented: $showHelpSheet) { HelpSheet() }
-        .navigationDestination(isPresented: $navigateToResult) {
-            if let result = multiFrameResult { ResultView(result: result) }
-        }
-        .onAppear {
-            viewModel.mode = mode
-            hintText = defaultHint
-            setupAnalyzer()
-        }
-        .onDisappear {
-            analyzer.stopSession()
-            viewModel.cancelAutoStop()
-        }
-        .onChange(of: viewModel.validationState) { updateHint() }
-        .onChange(of: viewModel.recordingState)  { updateHint() }
-        .onChange(of: viewModel.autoStopRemaining) { remaining in
-            if viewModel.recordingState == .recording && remaining > 0 {
-                hintText = String(format: NSLocalizedString("hint_auto_stop_countdown", comment: ""),
-                                  remaining)
-            }
-        }
     }
 
     // MARK: – Record button
@@ -143,6 +190,10 @@ struct CameraView: View {
     private var recordButton: some View {
         Button {
             if viewModel.recordingState == .idle {
+                guard DailyQuotaManager.canStart(isPremium: premium.isPremium) else {
+                    withAnimation { showQuotaDialog = true }
+                    return
+                }
                 viewModel.startRecording()
                 startAutoStopIfEnabled()
             } else {
@@ -266,18 +317,111 @@ struct CameraView: View {
 
             // Save this diagnosis into the practice-record history (last 30 kept).
             let worstImprovements = improvementsPerPhase[worstIdx].joined(separator: ", ")
+            // 部位別スコア（全フェーズ平均）— ウィークポイント傾向・前回との比較に使う
+            let componentAverages = WeakPointAnalyzer.averageComponentScores(phases.map(\.componentScores))
+            // ワーストフェーズの骨格比較画像を永続領域へコピー（一時ファイルは次の録画で上書きされる）
+            let weakPointImage = WeakPointImageStore.persist(sourcePath: imagePaths[worstIdx])
 
             DispatchQueue.main.async {
                 // PracticeRecordStore is @Published-backed, so it must be
                 // mutated on the main thread even though scoring itself
                 // runs on a background queue.
-                PracticeRecordStore.shared.add(
-                    mode: capturedMode, score: avg, improvementSummary: worstImprovements)
+                let store = PracticeRecordStore.shared
+
+                // 今回を保存する「前」に、前回の記録と自己ベストを取得しておく
+                let progress = ProgressSnapshot(
+                    best: ProgressComparator.evaluateBest(
+                        previousBest: PersonalBestManager.best(for: capturedMode), currentScore: avg),
+                    previousRecord: store.latestRecord(for: capturedMode),
+                    currentComponentScores: componentAverages)
+
+                store.add(PracticeRecord(
+                    mode: capturedMode, score: avg, improvementSummary: worstImprovements,
+                    componentScores: componentAverages, weakPointImageFile: weakPointImage))
+                PersonalBestManager.record(mode: capturedMode, score: avg)
 
                 isProcessing     = false
                 multiFrameResult = result
-                navigateToResult = true
+                resultProgress   = progress
+                consumeQuotaThenNavigate()
             }
+        }
+    }
+
+    // MARK: – 診断回数 / リワード広告 / プレミアム導線
+
+    private static let topNoticeShort: TimeInterval = 2.5
+    private static let topNoticeLong:  TimeInterval = 4.0
+
+    /// 診断 1 回分を消費してから結果画面へ遷移する。
+    private func consumeQuotaThenNavigate() {
+        let remaining = DailyQuotaManager.consume(isPremium: premium.isPremium)
+        if remaining >= 0 && remaining <= MonetizationConfig.lowQuotaNoticeThreshold {
+            // 結果画面の上に出すと見落とされるため、カメラ画面に戻ったとき上部に表示
+            pendingTopNotice = String(format: L("msg_quota_remaining"), remaining)
+        }
+        if remaining >= 0 && remaining <= 1 {
+            preloadRewardedAd()
+        }
+        navigateToResult = true
+    }
+
+    /// 残りが少なくなってからで十分なので、残り 1 回以下のときだけ先読みする（無料ユーザーのみ）。
+    private func preloadRewardedAd() {
+        guard !premium.isPremium, DailyQuotaManager.remaining() <= 1 else { return }
+        RewardedAdManager.shared.load()
+    }
+
+    private func showRewardedAd() {
+        showTopNotice(L("msg_reward_ad_loading"), seconds: Self.topNoticeShort)
+        var grantedRemaining = -1
+        RewardedAdManager.shared.show(.init(
+            onRewardEarned: {
+                // 視聴完了コールバックを受け取った時点でのみ +3 回
+                grantedRemaining = DailyQuotaManager.grantReward()
+            },
+            onAdClosed: { rewarded in
+                // 広告画面が閉じてカメラ画面に戻ってから表示する（広告の裏で消えないように）
+                if rewarded {
+                    showTopNotice(String(format: L("msg_reward_granted"),
+                                         DailyQuotaPolicy.rewardBonus, grantedRemaining),
+                                  seconds: Self.topNoticeLong)
+                } else {
+                    showTopNotice(L("msg_reward_not_granted"), seconds: Self.topNoticeShort)
+                }
+            },
+            onAdUnavailable: {
+                showTopNotice(L("msg_reward_ad_unavailable"), seconds: Self.topNoticeLong)
+            }
+        ))
+    }
+
+    /// 上部 HUD の直下にメッセージを一時表示する（Android の上部お知らせと同じデザイン）。
+    private func showTopNotice(_ message: String, seconds: TimeInterval) {
+        topNoticeToken += 1
+        let token = topNoticeToken
+        withAnimation(.easeOut(duration: 0.15)) { topNotice = message }
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            guard token == topNoticeToken else { return }
+            withAnimation(.easeIn(duration: 0.2)) { topNotice = nil }
+        }
+    }
+
+    @ViewBuilder
+    private var topNoticeView: some View {
+        if let topNotice {
+            Text(topNotice)
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(.white)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 16).padding(.vertical, 10)
+                .background(Color.black.opacity(0.9))
+                .overlay(RoundedRectangle(cornerRadius: 12).stroke(AppColors.cyan, lineWidth: 1.5))
+                .cornerRadius(12)
+                .padding(.horizontal, 24)
+                .padding(.top, 76)
+                .transition(.opacity)
+                .allowsHitTesting(false)
         }
     }
 

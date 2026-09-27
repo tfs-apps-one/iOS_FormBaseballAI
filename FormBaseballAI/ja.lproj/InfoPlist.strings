@@ -1,2 +1,6 @@
 /* Localized app name shown on the Home Screen (ja) */
 "CFBundleDisplayName" = "AI野球フォーム診断";
+
+/* 権限ダイアログの説明文（日本語） */
+"NSCameraUsageDescription" = "カメラを使用して野球フォームを分析します。";
+"NSUserTrackingUsageDescription" = "この識別子は、あなたに合った広告（動画広告）を表示するために使用されます。";

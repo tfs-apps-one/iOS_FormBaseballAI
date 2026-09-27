@@ -1,0 +1,111 @@
+{
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
+  "identifier" : "6F3C1A52",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "2000",
+      "familyShareable" : false,
+      "internalID" : "6751000001",
+      "localizations" : [
+        {
+          "description" : "診断回数無制限・練習記録30回・成長グラフ・ウィークポイント傾向・自己ベスト・前回との比較",
+          "displayName" : "プレミアム（買い切り）",
+          "locale" : "ja"
+        },
+        {
+          "description" : "Unlimited diagnoses, 30-session history, growth graph, weak point trend, personal best and comparison",
+          "displayName" : "Premium (one-time)",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "premium_plan",
+      "referenceName" : "Premium Lifetime",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_askToBuyEnabled" : false,
+    "_billingGracePeriodEnabled" : false,
+    "_billingIssuesEnabled" : false,
+    "_disableDialogs" : false,
+    "_failTransactionsEnabled" : false,
+    "_locale" : "ja",
+    "_renewalBillingIssuesEnabled" : false,
+    "_storefront" : "JPN",
+    "_storeKitErrors" : [
+
+    ],
+    "_timeRate" : 0
+  },
+  "subscriptionGroups" : [
+    {
+      "id" : "21750001",
+      "localizations" : [
+
+      ],
+      "name" : "Premium",
+      "subscriptions" : [
+        {
+          "adHocOffers" : [
+
+          ],
+          "billingPlans" : [
+            {
+              "billingPlanType" : "BILLED_UPFRONT",
+              "commitmentDisplayPrice" : "150",
+              "displayPrice" : "150",
+              "internalID" : "FC591131",
+              "isEnabled" : true
+            }
+          ],
+          "codeOffers" : [
+
+          ],
+          "displayPrice" : "280",
+          "familyShareable" : false,
+          "groupNumber" : 1,
+          "internalID" : "6751000002",
+          "introductoryOffers" : [
+
+          ],
+          "localizations" : [
+            {
+              "description" : "診断回数無制限ほかプレミアム機能がすべて使えます（毎月自動更新）",
+              "displayName" : "プレミアム（月額）",
+              "locale" : "ja"
+            },
+            {
+              "description" : "All Premium features, renewed every month",
+              "displayName" : "Premium (monthly)",
+              "locale" : "en_US"
+            }
+          ],
+          "productID" : "premium_monthly",
+          "recurringSubscriptionPeriod" : "P1M",
+          "referenceName" : "Premium Monthly",
+          "subscriptionGroupID" : "21750001",
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
+        }
+      ]
+    }
+  ],
+  "version" : {
+    "major" : 5,
+    "minor" : 0
+  }
+}

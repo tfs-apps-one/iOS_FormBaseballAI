@@ -9,6 +9,9 @@ target 'FormBaseballAI' do
   # Accurate mode (same model used in the Android version)
   pod 'GoogleMLKit/PoseDetectionAccurate', '~> 7.0'
 
+  # ── Ads ────────────────────────────────────────────────────────────────────
+  pod 'Google-Mobile-Ads-SDK'
+
 end
 
 target 'FormBaseballAITests' do

@@ -207,6 +207,10 @@ This application makes use of the following third party libraries:
    limitations under the License.
 
 
+## Google-Mobile-Ads-SDK
+
+Copyright 2026 Google LLC
+
 ## GoogleDataTransport
 
 
@@ -622,6 +626,10 @@ Copyright 2024 Google LLC
    See the License for the specific language governing permissions and
    limitations under the License.
 
+
+## GoogleUserMessagingPlatform
+
+Copyright 2025 Google LLC
 
 ## GoogleUtilities
 

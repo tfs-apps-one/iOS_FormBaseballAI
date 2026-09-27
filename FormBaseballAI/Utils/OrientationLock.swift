@@ -35,8 +35,15 @@ enum OrientationLock {
 }
 
 /// Registered via @UIApplicationDelegateAdaptor in FormBaseballAIApp so UIKit
-/// has a delegate to ask for the currently-allowed orientation mask.
+/// has a delegate to ask for the currently-allowed orientation mask, and to
+/// give AdMob a standard launch hook (see AdsBootstrap.swift).
 final class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication,
+                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil) -> Bool {
+        AdsBootstrap.start()
+        return true
+    }
+
     func application(_ application: UIApplication,
                       supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         OrientationLock.mask

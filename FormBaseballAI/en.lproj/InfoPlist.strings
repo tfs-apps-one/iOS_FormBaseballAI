@@ -1,2 +1,6 @@
 /* Localized app name shown on the Home Screen (en) */
 "CFBundleDisplayName" = "AI Baseball Form Coach";
+
+/* Permission prompt descriptions (English) */
+"NSCameraUsageDescription" = "The camera is used to analyze your baseball form.";
+"NSUserTrackingUsageDescription" = "This identifier will be used to deliver personalized (video) ads to you.";
