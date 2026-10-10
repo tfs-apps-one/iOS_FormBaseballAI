@@ -3,7 +3,7 @@
 // Mirrors: tfsapps.formbaseballai.camera.CameraActivity
 //
 // • 無料ユーザーは 1 日 5 回まで（DailyQuotaManager）。0 回で録画開始しようとすると
-//   リワード広告（+3 回）／プレミアムの案内モーダルを表示する。
+//   リワード広告（+5 回）／プレミアムの案内モーダルを表示する。
 // • 回数は「診断が完了して結果画面へ進むとき」に 1 回消費する。
 // • 残りが少なくなったら、結果画面から戻ったときにカメラ画面上部で知らせる。
 // • バナー／インタースティシャル広告は Android v3.0 に合わせて全廃。
@@ -327,6 +327,8 @@ struct CameraView: View {
                 // mutated on the main thread even though scoring itself
                 // runs on a background queue.
                 let store = PracticeRecordStore.shared
+                // 評価依頼の判定用：初回だけ過去の記録から利用状況を引き継ぐ（今回分を保存する前に）
+                ReviewPromptManager.shared.seedFromHistoryIfNeeded(store.records.map(\.date))
 
                 // 今回を保存する「前」に、前回の記録と自己ベストを取得しておく
                 let progress = ProgressSnapshot(
@@ -339,6 +341,8 @@ struct CameraView: View {
                     mode: capturedMode, score: avg, improvementSummary: worstImprovements,
                     componentScores: componentAverages, weakPointImageFile: weakPointImage))
                 PersonalBestManager.record(mode: capturedMode, score: avg)
+                // 評価依頼の判定用（ヘビーユーザー／プレミアム加入後の利用回数）
+                ReviewPromptManager.shared.recordDiagnosis(isPremium: premium.isPremium)
 
                 isProcessing     = false
                 multiFrameResult = result
@@ -377,7 +381,7 @@ struct CameraView: View {
         var grantedRemaining = -1
         RewardedAdManager.shared.show(.init(
             onRewardEarned: {
-                // 視聴完了コールバックを受け取った時点でのみ +3 回
+                // 視聴完了コールバックを受け取った時点でのみ +5 回
                 grantedRemaining = DailyQuotaManager.grantReward()
             },
             onAdClosed: { rewarded in

@@ -2,7 +2,7 @@
 // Mirrors: CameraActivity#showQuotaExhaustedDialog() + res/layout/dialog_quota_exhausted.xml
 //
 // デザインは上部お知らせと統一（黒背景＋水色の外枠＋白文字）。
-// 「▶ 動画を見て＋3回」「👑 プレミアムで無制限にする」「閉じる」の 3 択。
+// 「▶ 動画を見て＋5回」「👑 プレミアムで無制限にする」「閉じる」の 3 択。
 
 import SwiftUI
 

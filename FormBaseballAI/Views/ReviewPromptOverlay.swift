@@ -1,15 +1,13 @@
-// ReviewPromptOverlay.swift — Custom "please review" popup.
-//
-// Shown as an overlay (not a .sheet/.alert) so it can't be swiped away
-// without an explicit choice, matching the two options the app offers:
-// "評価する" (Rate) and "次回以降は表示しない" (Don't show again).
+// ReviewPromptOverlay.swift — プレミアム会員向けの特別な感謝＆評価依頼ポップアップ。
+// 表示条件は ReviewPromptManager（(B) premiumSpecial）を参照。
+// 「評価する」→ App Store のレビュー画面 / 「閉じる」→ そのまま閉じる。
 
 import SwiftUI
 
 struct ReviewPromptOverlay: View {
 
     let onRate: () -> Void
-    let onDismissForever: () -> Void
+    let onClose: () -> Void
 
     var body: some View {
         ZStack {
@@ -17,7 +15,7 @@ struct ReviewPromptOverlay: View {
                 .ignoresSafeArea()
 
             VStack(spacing: 16) {
-                Text("⚾️")
+                Text("👑")
                     .font(.system(size: 40))
 
                 Text(NSLocalizedString("review_prompt_title", comment: ""))
@@ -43,7 +41,7 @@ struct ReviewPromptOverlay: View {
                             .cornerRadius(12)
                     }
 
-                    Button(action: onDismissForever) {
+                    Button(action: onClose) {
                         Text(NSLocalizedString("review_prompt_dismiss_button", comment: ""))
                             .font(.system(size: 14))
                             .foregroundColor(.white.opacity(0.6))
@@ -66,6 +64,6 @@ struct ReviewPromptOverlay: View {
 #Preview {
     ZStack {
         Color.black.ignoresSafeArea()
-        ReviewPromptOverlay(onRate: {}, onDismissForever: {})
+        ReviewPromptOverlay(onRate: {}, onClose: {})
     }
 }

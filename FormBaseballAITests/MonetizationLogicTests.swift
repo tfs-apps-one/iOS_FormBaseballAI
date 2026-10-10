@@ -19,25 +19,30 @@ struct DailyQuotaPolicyTests {
         .init(wallMs: wall, elapsedMs: elapsed, bootID: boot, timeZone: tokyo)
     }
 
+    @Test func limitsAreTenFreeAndFivePerReward() {
+        #expect(DailyQuotaPolicy.dailyFreeLimit == 10)
+        #expect(DailyQuotaPolicy.rewardBonus == 5)
+    }
+
     @Test func firstLaunchGivesFullQuota() {
         var s = DailyQuotaPolicy.State()
         DailyQuotaPolicy.refresh(&s, clock(base, 1_000))
-        #expect(s.remaining == 5)
+        #expect(s.remaining == 10)
         #expect(s.dayKey == 20260926)
     }
 
     @Test func consumeAndRewardAndPremium() {
         var s = DailyQuotaPolicy.State()
         DailyQuotaPolicy.refresh(&s, clock(base, 1_000))
-        for _ in 0..<5 { #expect(DailyQuotaPolicy.consume(&s, isPremium: false)) }
+        for _ in 0..<10 { #expect(DailyQuotaPolicy.consume(&s, isPremium: false)) }
         #expect(!DailyQuotaPolicy.canStart(s, isPremium: false))
         #expect(DailyQuotaPolicy.canStart(s, isPremium: true))
         #expect(!DailyQuotaPolicy.consume(&s, isPremium: false))
         DailyQuotaPolicy.grantReward(&s)
-        #expect(s.remaining == 3)
+        #expect(s.remaining == 5)
         #expect(s.rewardsToday == 1)
         #expect(DailyQuotaPolicy.consume(&s, isPremium: true))
-        #expect(s.remaining == 3) // プレミアムは消費しない
+        #expect(s.remaining == 5) // プレミアムは消費しない
     }
 
     @Test func resetsWhenDateAdvancesNaturally() {
@@ -47,7 +52,7 @@ struct DailyQuotaPolicyTests {
         // 同一起動のまま 15 時間経過（翌日 01:00 JST）
         let reset = DailyQuotaPolicy.refresh(&s, clock(base + 15 * hour, 1_000 + 15 * hour))
         #expect(reset)
-        #expect(s.remaining == 5)
+        #expect(s.remaining == 10)
     }
 
     @Test func movingClockForwardInSameBootDoesNotReset() {
@@ -70,7 +75,7 @@ struct DailyQuotaPolicyTests {
         // その後の自然な経過で「引き直した日」の翌日にはリセットされる
         let reset = DailyQuotaPolicy.refresh(&s, clock(base - 24 * hour, 500 + 24 * hour, boot: "B"))
         #expect(reset)
-        #expect(s.remaining == 5)
+        #expect(s.remaining == 10)
     }
 
     @Test func rebootNextDayResets() {
@@ -79,7 +84,7 @@ struct DailyQuotaPolicyTests {
         s.remaining = 0
         let reset = DailyQuotaPolicy.refresh(&s, clock(base + 20 * hour, 5_000, boot: "B"))
         #expect(reset)
-        #expect(s.remaining == 5)
+        #expect(s.remaining == 10)
     }
 }
 

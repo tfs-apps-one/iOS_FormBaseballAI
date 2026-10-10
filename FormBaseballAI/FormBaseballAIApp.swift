@@ -14,9 +14,6 @@ struct FormBaseballAIApp: App {
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
     init() {
-        // Counts a "launch" once per cold start of the app process.
-        ReviewPromptManager.shared.recordLaunch()
-
         // StoreKit 2: 未処理の取引・更新・返金の監視を起動直後から開始し、
         // 商品情報と現在の権利（プレミアムかどうか）を App Store に照会する。
         StoreManager.shared.start()
@@ -32,7 +29,11 @@ struct FormBaseballAIApp: App {
         .onChange(of: scenePhase) {
             // 復帰時に権利を読み直す（サブスクの失効・別端末での購入などを反映）
             if scenePhase == .active {
-                Task { await StoreManager.shared.refreshEntitlements() }
+                Task {
+                    await StoreManager.shared.refreshEntitlements()
+                    // 起動時に商品情報を取れなかった場合（通信不調など）はここで取り直す
+                    await StoreManager.shared.loadProductsIfNeeded()
+                }
             }
         }
     }

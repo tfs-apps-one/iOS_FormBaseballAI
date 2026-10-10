@@ -17,8 +17,6 @@ struct HomeView: View {
     @State private var navigateToCamera = false
     @State private var navigateToPracticeRecord = false
     @State private var navigateToNotice = false
-    @State private var showReviewPrompt = false
-    @State private var hasCheckedReviewPrompt = false
     @State private var showPremium = false
 
     @State private var quotaRemaining = DailyQuotaPolicy.dailyFreeLimit
@@ -129,23 +127,6 @@ struct HomeView: View {
                 }
                 .scrollBounceBehavior(.basedOnSize)
                 }
-
-                // ── Review prompt overlay ────────────────────────────────
-                if showReviewPrompt {
-                    ReviewPromptOverlay(
-                        onRate: {
-                            // Do NOT opt out here — the prompt should keep
-                            // appearing on every future launch (3rd, 4th, 5th…)
-                            // unless the user explicitly dismisses it forever.
-                            ReviewPromptManager.shared.openAppStoreReviewPage()
-                            withAnimation { showReviewPrompt = false }
-                        },
-                        onDismissForever: {
-                            ReviewPromptManager.shared.optOut()
-                            withAnimation { showReviewPrompt = false }
-                        }
-                    )
-                }
             }
             .navigationDestination(isPresented: $navigateToCamera) {
                 if let mode = selectedMode {
@@ -163,17 +144,6 @@ struct HomeView: View {
             .onAppear {
                 // 日付が変わった／リワードで増えた／購入した などを反映
                 refreshStatus()
-
-                // Guard so returning to HomeView from CameraView (a pop, which
-                // re-triggers onAppear) doesn't re-check/re-show the prompt.
-                guard !hasCheckedReviewPrompt else { return }
-                hasCheckedReviewPrompt = true
-
-                if ReviewPromptManager.shared.shouldShowPrompt {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.6) {
-                        withAnimation { showReviewPrompt = true }
-                    }
-                }
             }
             .onChange(of: premium.isPremium) { refreshStatus() }
             .onChange(of: scenePhase) { if scenePhase == .active { refreshStatus() } }

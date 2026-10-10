@@ -23,8 +23,8 @@ import Foundation
 
 enum DailyQuotaPolicy {
 
-    static let dailyFreeLimit = 5
-    static let rewardBonus    = 3
+    static let dailyFreeLimit = 10
+    static let rewardBonus    = 5
 
     /// NTP 補正などの正当なずれとして許容する幅。
     static let driftToleranceMs: Int64 = 10 * 60 * 1000

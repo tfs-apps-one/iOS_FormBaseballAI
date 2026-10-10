@@ -90,10 +90,10 @@
 "improve_bat_knee"        = "前足でしっかり踏み込み約158°まで伸ばしましょう。";
 
 /* ── Review prompt ─────────────────────────────────────── */
-"review_prompt_title"         = "応援ありがとうございます！";
-"review_prompt_message"       = "このアプリは個人で開発・運営しています。皆さまからのレビューやコメントが、開発を続ける大きな励みになっています。もしよろしければ、率直なご感想をお聞かせください。";
+"review_prompt_title"         = "プレミアム会員の皆さまへ";
+"review_prompt_message"       = "いつもご支援いただき、本当にありがとうございます。このアプリは個人で開発・運営しており、プレミアム会員の皆さまのおかげで開発を続けられています。\n\nよろしければ、App Store で率直なご感想をお聞かせください。今後の改善に活かします。";
 "review_prompt_rate_button"   = "評価する";
-"review_prompt_dismiss_button" = "次回以降は表示しない";
+"review_prompt_dismiss_button" = "閉じる";
 
 /* ── Practice record ───────────────────────────────────── */
 "btn_practice_record"              = "練習記録";
@@ -106,14 +106,14 @@
 "chart_legend_pitching"            = "ピッチング";
 "chart_legend_batting"             = "バッティング";
 
-/* ══ v3.0 相当: 1日5回の無料枠 / リワード広告 / 新プレミアム / 自己ベスト・前回比較 / お知らせ ══
+/* ══ v3.0 相当: 1日10回の無料枠 / リワード広告 / 新プレミアム / 自己ベスト・前回比較 / お知らせ ══
    Android の values(-ja)/strings.xml から移植。キーは Android と同じ名前にしている。
    ja / en の両方に同じキーを必ず追加すること。 */
 "dialog_premium_title" = "プレミアムプラン";
 "premium_subtitle" = "診断回数を気にせず、本気で上達したい方へ";
 "premium_one_time_badge" = "🔓 買い切り または 月額 から選べます";
 "premium_feature1_title" = "診断回数 無制限・広告なし";
-"premium_feature1_desc" = "1日5回の制限なし。動画広告を見る必要もなく、何度でも練習できます";
+"premium_feature1_desc" = "1日10回の制限なし。動画広告を見る必要もなく、何度でも練習できます";
 "premium_feature2_title" = "練習記録";
 "premium_feature2_desc" = "無料版では直近3件までですが、プレミアムなら過去30回分のスコアと、それぞれのウィークポイントの概要をいつでも見返せます。";
 "premium_feature3_title" = "成長グラフ";
@@ -182,8 +182,8 @@
 "notice_title" = "大幅リニューアルおよび機能改定のお知らせ";
 "notice_intro" = "いつも「AI野球フォーム診断」をご利用いただき、誠にありがとうございます。\nより快適に、そしてより多くの方に練習を続けていただけるよう、アプリを大幅にリニューアルいたしました。";
 "notice_item_ads_body" = "練習に集中していただけるよう、画面内のバナー広告と、診断後などに表示されていた全画面広告（インタースティシャル）をすべて廃止しました。";
-"notice_item_free_body" = "ピッチング・バッティング合計で、1日5回まで無料で診断いただけます。回数は毎日0時にリセットされます。";
-"notice_item_reward_body" = "無料枠を使い切った後も、短い動画広告を1回ご覧いただくだけで＋3回分追加されます。実質無料で何度でも練習を続けられます。";
+"notice_item_free_body" = "ピッチング・バッティング合計で、1日10回まで無料で診断いただけます。回数は毎日0時にリセットされます。";
+"notice_item_reward_body" = "無料枠を使い切った後も、短い動画広告を1回ご覧いただくだけで＋5回分追加されます。実質無料で何度でも練習を続けられます。";
 "notice_item_premium_title" = "③ 新「プレミアムプラン」を新設しました";
 "notice_item_premium_body" = "本気で上達を目指す方向けに、買い切りプランと月額プランをご用意しました。\n・診断回数 無制限（動画広告の視聴不要）\n・練習記録：直近30回分の保存・閲覧\n・ウィークポイント分析（AIによる課題・弱点の詳細分析）\n・自己ベスト／前回との比較（④⑤参照）\n・広告の完全非表示";
 "notice_item_best_title" = "④ 自己ベスト（プレミアム）";
@@ -199,8 +199,11 @@
 "msg_purchase_error" = "購入処理を完了できませんでした（%@）。時間をおいて再度お試しください。";
 "msg_billing_unavailable" = "App Store に接続できませんでした。時間をおいて再度お試しください。";
 "msg_purchase_verify_failed" = "購入内容を確認できませんでした";
+"msg_billing_loading_short" = "価格を読み込んでいます…";
+"msg_products_unavailable" = "App Store から商品情報を取得できませんでした。通信環境をご確認のうえ、「再読み込み」をお試しください。";
+"btn_reload_products" = "再読み込み";
 "msg_purchase_pending" = "購入の承認待ちです。承認されると自動でプレミアムが適用されます。";
 "notice_date" = "Ver.2.0";
 "notice_item_ads_title" = "★ バナー広告・全画面広告を完全撤廃しました";
-"notice_item_free_title" = "① 毎日5回まで無料で診断できます";
-"notice_item_reward_title" = "② 6回目以降も、動画1本で＋3回";
+"notice_item_free_title" = "① 毎日10回まで無料で診断できます";
+"notice_item_reward_title" = "② 11回目以降も、動画1本で＋5回";

@@ -1,4 +1,4 @@
-// NoticeView.swift — 「お知らせ」詳細画面（1日5回の無料枠・リワード動画・新プレミアム・
+// NoticeView.swift — 「お知らせ」詳細画面（1日10回の無料枠・リワード動画・新プレミアム・
 // 自己ベスト／前回との比較）。
 // Mirrors: tfsapps.formbaseballai.notice.NoticeActivity + res/layout/activity_notice.xml
 //

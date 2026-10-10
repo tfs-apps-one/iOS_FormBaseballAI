@@ -90,10 +90,10 @@
 "improve_bat_knee"        = "Drive through your front leg — aim for ~158° extension.";
 
 /* ── Review prompt ─────────────────────────────────────── */
-"review_prompt_title"         = "Thanks for using the app!";
-"review_prompt_message"       = "This app is built and maintained by a solo developer. Your review and comments mean a lot and really help keep it going — I'd love to hear your honest feedback.";
+"review_prompt_title"         = "To our Premium members";
+"review_prompt_message"       = "Thank you so much for your support. This app is built and maintained by a solo developer, and Premium members are what keep it going.\n\nIf you have a moment, I'd love to hear your honest feedback on the App Store — it helps shape future updates.";
 "review_prompt_rate_button"   = "Rate the App";
-"review_prompt_dismiss_button" = "Don't show again";
+"review_prompt_dismiss_button" = "Close";
 
 /* ── Practice record ───────────────────────────────────── */
 "btn_practice_record"              = "Practice Log";
@@ -106,14 +106,14 @@
 "chart_legend_pitching"            = "Pitching";
 "chart_legend_batting"             = "Batting";
 
-/* ══ v3.0 相当: 1日5回の無料枠 / リワード広告 / 新プレミアム / 自己ベスト・前回比較 / お知らせ ══
+/* ══ v3.0 相当: 1日10回の無料枠 / リワード広告 / 新プレミアム / 自己ベスト・前回比較 / お知らせ ══
    Android の values(-ja)/strings.xml から移植。キーは Android と同じ名前にしている。
    ja / en の両方に同じキーを必ず追加すること。 */
 "dialog_premium_title" = "Premium Plan";
 "premium_subtitle" = "For players serious about improving — no daily limits";
 "premium_one_time_badge" = "🔓 Choose one-time or monthly";
 "premium_feature1_title" = "Unlimited diagnoses, no ads";
-"premium_feature1_desc" = "No 5-per-day limit and no video ads — practice as much as you like";
+"premium_feature1_desc" = "No 10-per-day limit and no video ads — practice as much as you like";
 "premium_feature2_title" = "Practice Log";
 "premium_feature2_desc" = "Free plan shows your latest 3 sessions. Premium unlocks all 30, with scores and a quick summary of your weak points for each.";
 "premium_feature3_title" = "Growth Graph";
@@ -182,8 +182,8 @@
 "notice_title" = "Major Renewal and Plan Changes";
 "notice_intro" = "Thank you for using AI Baseball Form Coach.\nWe've given the app a major renewal so that more players can keep practicing, more comfortably.";
 "notice_item_ads_body" = "To keep you focused on practice, we've removed all on-screen banner ads and the full-screen (interstitial) ads that used to appear after diagnoses.";
-"notice_item_free_body" = "You get 5 free diagnoses per day (pitching and batting combined). The count resets every day at midnight.";
-"notice_item_reward_body" = "After the free diagnoses are used up, watch one short video ad to get 3 more — keep practicing as much as you like, essentially for free.";
+"notice_item_free_body" = "You get 10 free diagnoses per day (pitching and batting combined). The count resets every day at midnight.";
+"notice_item_reward_body" = "After the free diagnoses are used up, watch one short video ad to get 5 more — keep practicing as much as you like, essentially for free.";
 "notice_item_premium_title" = "3. New Premium plan";
 "notice_item_premium_body" = "For players serious about improving, we now offer a one-time purchase and a monthly plan.\n• Unlimited diagnoses (no video ads needed)\n• Practice Log: save and review your last 30 sessions\n• Weak Point analysis (detailed AI breakdown of your recurring issues)\n• Personal Best and comparison with last time (see 4 and 5)\n• Completely ad-free";
 "notice_item_best_title" = "4. Personal Best (Premium)";
@@ -199,8 +199,11 @@
 "msg_purchase_error" = "Couldn't complete the purchase (%@). Please try again later.";
 "msg_billing_unavailable" = "Couldn't connect to the App Store. Please try again later.";
 "msg_purchase_verify_failed" = "the purchase could not be verified";
+"msg_billing_loading_short" = "Loading prices…";
+"msg_products_unavailable" = "Couldn't load product info from the App Store. Please check your connection and tap “Reload”.";
+"btn_reload_products" = "Reload";
 "msg_purchase_pending" = "Your purchase is waiting for approval. Premium will be applied automatically once it's approved.";
 "notice_date" = "Ver.2.0";
 "notice_item_ads_title" = "★ Banner and full-screen ads are gone";
-"notice_item_free_title" = "1. 5 free diagnoses every day";
-"notice_item_reward_title" = "2. +3 more for one short video";
+"notice_item_free_title" = "1. 10 free diagnoses every day";
+"notice_item_reward_title" = "2. +5 more for one short video";

@@ -47,8 +47,17 @@ final class StoreManager: ObservableObject {
 
     @Published private(set) var products: [String: Product] = [:]
     @Published private(set) var isLoadingProducts = false
+    /// 再試行しても一部（または全部）の商品情報を取得できなかった。
+    @Published private(set) var productsUnavailable = false
 
     private var updatesTask: Task<Void, Never>?
+    /// 実行中の商品情報の取得。同時に呼ばれた場合は同じ取得の完了を待つ
+    /// （購入画面の表示直後に購入ボタンを押しても「取得中」エラーにならないように）。
+    private var loadTask: Task<Void, Never>?
+
+    private var hasAllProducts: Bool {
+        products.count >= EntitlementPolicy.allProductIDs.count
+    }
     private var started = false
 
     private init() {}
@@ -75,25 +84,51 @@ final class StoreManager: ObservableObject {
 
     // MARK: - 商品情報
 
+    /// 商品情報を取得する。すでに取得中ならその完了を待つ。
+    /// 通信エラーや一時的に空で返ってきた場合は、間隔をあけて最大 3 回まで取り直す。
     func loadProducts() async {
-        guard !isLoadingProducts else { return }
+        if let loadTask {
+            await loadTask.value
+            return
+        }
+        let task = Task { @MainActor in
+            await self.performLoadProducts()
+        }
+        loadTask = task
+        await task.value
+        loadTask = nil
+    }
+
+    /// まだ揃っていなければ取り直す（アプリ復帰時など）。
+    func loadProductsIfNeeded() async {
+        if !hasAllProducts { await loadProducts() }
+    }
+
+    private func performLoadProducts() async {
         isLoadingProducts = true
         defer { isLoadingProducts = false }
-        do {
-            let list = try await Product.products(for: EntitlementPolicy.allProductIDs)
-            var dict = [String: Product]()
-            for p in list { dict[p.id] = p }
-            products = dict
-            #if DEBUG
-            if list.count < EntitlementPolicy.allProductIDs.count {
-                print("StoreManager: some products are unavailable — got \(list.map(\.id))")
+
+        let ids = EntitlementPolicy.allProductIDs
+        let maxAttempts = 3
+        for attempt in 1...maxAttempts {
+            do {
+                let list = try await Product.products(for: ids)
+                // 取れた分だけでも残す（部分的な成功を失わないよう上書きではなくマージ）
+                for p in list { products[p.id] = p }
+                #if DEBUG
+                print("StoreManager: attempt \(attempt) got \(list.map(\.id))")
+                #endif
+            } catch {
+                #if DEBUG
+                print("StoreManager: attempt \(attempt) failed — \(error.localizedDescription)")
+                #endif
             }
-            #endif
-        } catch {
-            #if DEBUG
-            print("StoreManager: failed to load products — \(error.localizedDescription)")
-            #endif
+            if hasAllProducts { break }
+            if attempt < maxAttempts {
+                try? await Task.sleep(nanoseconds: UInt64(attempt) * 1_500_000_000)
+            }
         }
+        productsUnavailable = !hasAllProducts
     }
 
     func product(for plan: Plan) -> Product? {
@@ -140,7 +175,7 @@ final class StoreManager: ObservableObject {
             await loadProducts()
         }
         guard let product = product(for: plan) else {
-            return .failed(NSLocalizedString("msg_billing_loading", comment: ""))
+            return .failed(NSLocalizedString("msg_products_unavailable", comment: ""))
         }
 
         do {

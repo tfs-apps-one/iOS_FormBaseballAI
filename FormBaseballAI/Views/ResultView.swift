@@ -20,6 +20,7 @@
 // （SwiftUI の View は何度も生成され得るため、ここでは保存しない）。
 
 import SwiftUI
+import StoreKit
 
 /// 結果画面の「自己ベスト」「前回との比較」を描くための材料。
 /// 今回の記録を保存する「前」に作ること。
@@ -44,6 +45,11 @@ struct ResultView: View {
     @State private var showExplainer = false
 
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.requestReview) private var requestReview
+
+    /// 評価依頼の判定はこの画面につき 1 回だけ
+    @State private var hasCheckedReview = false
+    @State private var showPremiumReview = false
 
     init(result: MultiFrameResult, progress: ProgressSnapshot? = nil) {
         self.result = result
@@ -121,6 +127,20 @@ struct ResultView: View {
                 .padding(.top, 16)
             }
         }
+        .overlay {
+            // (B) プレミアム会員向けの特別ポップアップ
+            if showPremiumReview {
+                ReviewPromptOverlay(
+                    onRate: {
+                        ReviewPromptManager.shared.premiumSpecialRateTapped()
+                        withAnimation { showPremiumReview = false }
+                    },
+                    onClose: {
+                        withAnimation { showPremiumReview = false }
+                    })
+            }
+        }
+        .onAppear(perform: checkReviewPrompt)
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(true)
         .sheet(isPresented: $showExplainer) {
@@ -131,6 +151,36 @@ struct ResultView: View {
             .presentationDetents([.medium, .large])
         }
         .premiumSheet(isPresented: $showPremium)
+    }
+
+    // MARK: – 評価依頼（条件は ReviewPromptManager）
+
+    /// 良い結果（自己ベスト更新 または ★4＝75点以上）が出たときだけ判定する。
+    private var isGoodResult: Bool {
+        progress?.best.kind == .newBest || result.starsCount >= 4
+    }
+
+    private func checkReviewPrompt() {
+        guard !hasCheckedReview else { return }
+        hasCheckedReview = true
+
+        let manager = ReviewPromptManager.shared
+        let decision = manager.decision(isPremium: premium.isPremium, isGoodResult: isGoodResult)
+        guard decision != .none else { return }
+
+        // 結果をひと目見てもらってから、さりげなく表示する
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            switch decision {
+            case .systemPrompt:
+                manager.markSystemPromptRequested()
+                requestReview()
+            case .premiumSpecial:
+                manager.markPremiumSpecialShown()
+                withAnimation { showPremiumReview = true }
+            case .none:
+                break
+            }
+        }
     }
 
     // MARK: – 自己ベスト / 前回との比較

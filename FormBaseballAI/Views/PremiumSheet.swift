@@ -67,6 +67,8 @@ struct PremiumSheet: View {
 
                     purchaseButtons.padding(.top, 20)
 
+                    productStatus
+
                     if let errorMessage {
                         Text(errorMessage)
                             .font(.system(size: 13)).foregroundColor(AppColors.bad)
@@ -128,6 +130,37 @@ struct PremiumSheet: View {
         .background(Color.white.opacity(0.05))
         .overlay(RoundedRectangle(cornerRadius: 16).stroke(AppColors.gold.opacity(0.35), lineWidth: 1))
         .cornerRadius(16)
+    }
+
+    // MARK: - 商品情報の取得状況
+
+    /// 価格を取得中はスピナー、取得できなかったときは「再読み込み」を出す。
+    @ViewBuilder
+    private var productStatus: some View {
+        if store.isLoadingProducts && store.products.isEmpty {
+            HStack(spacing: 8) {
+                ProgressView().tint(.white)
+                Text(L("msg_billing_loading_short"))
+                    .font(.system(size: 12)).foregroundColor(Color(white: 0.7))
+            }
+            .padding(.top, 12)
+        } else if store.productsUnavailable && !store.isLoadingProducts {
+            VStack(spacing: 8) {
+                Text(L("msg_products_unavailable"))
+                    .font(.system(size: 12)).foregroundColor(Color(white: 0.7))
+                    .multilineTextAlignment(.center)
+                    .fixedSize(horizontal: false, vertical: true)
+                Button {
+                    errorMessage = nil
+                    Task { @MainActor in await store.loadProducts() }
+                } label: {
+                    Text(L("btn_reload_products"))
+                        .font(.system(size: 13, weight: .semibold))
+                        .foregroundColor(AppColors.cyan)
+                }
+            }
+            .padding(.top, 12)
+        }
     }
 
     // MARK: - Buttons
